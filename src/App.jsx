@@ -1,10 +1,8 @@
-const subject = "React";
-
-function App() {
+function App(props) {
   return (
     <>
       <header>
-        <h1>Hello, {subject}!</h1>
+        <h1>Hello, {props.subject}!</h1>
         <button type="button" className="primary">
           Click me!
         </button>
