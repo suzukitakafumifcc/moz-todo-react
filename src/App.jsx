@@ -1,11 +1,11 @@
-import { useState } from "react";
-import "./App.css";
-
 function App() {
   return (
     <>
       <header>
         <h1>Hello, World!</h1>
+        <button type="button" className="primary">
+          Click me!
+        </button>
       </header>
     </>
   );
