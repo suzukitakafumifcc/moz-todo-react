@@ -7,9 +7,22 @@ import { nanoid } from "nanoid";
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
 
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map((task) => {
+      // このタスクが編集されたタスクと同じIDを持っている場合
+      if (id === task.id) {
+        // タスクをコピーし、名前を更新する
+        return { ...task, name: newName };
+      }
+      // 編集されたタスクでない場合は、元のタスクを返します。
+      return task;
+    });
+    setTasks(editedTaskList);
+  }
+
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map((task) => {
-      // このタスクがへsン封されたタスクと同じIDを持っている場合
+      // このタスクが編集されたタスクと同じIDを持っている場合
       if (id === task.id) {
         // オブジェクトを開いて、`completed`プロップが
         // 反転された新しいオブジェクトを作成します。
@@ -33,6 +46,7 @@ function App(props) {
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
+      editTask={editTask}
     />
   ));
 
